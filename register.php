@@ -13,14 +13,14 @@
         <div class="row justify-contetnt-center">
             <div class="col-md-6">
                 <div class="card shadow">
-                    <div class="card body">
+                    <div class="card-body">
                         <h2 class="text-center">Register</h2>
 
                         <?php 
                         if ($_SERVER['REQUEST_METHOD']=='POST') {
                             $name = $_POST['name'];
                             $email =$_POST['email'];
-                            $password = password_hash($_POST['password'] PASSWORD_BCRYPT);
+                            $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
                              $sql = "INSERT INTO users(username, email, password) VALUE(?, ?, ?)";
                              $stmt = $pdo->prepare($sql);

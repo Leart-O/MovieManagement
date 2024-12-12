@@ -12,7 +12,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <div class="card-shadow">
+                <div class="card shadow">
                     <div class="card-body">
                         <h2 class="text-center">Login</h2>
                         <?php
@@ -22,7 +22,7 @@
 
                             $sql('SELECT * FROM users WHERE email = ?');
                             $stmt = $pdo->prepare($sql);
-                         $stmt->bindParam(':email' , $email);
+                         $stmt->bindParam('s' , $email);
                             $stmt->execute(); 
                             $result = $stmt -> get_result();
                             $user = $result ->fetch_assoc();
