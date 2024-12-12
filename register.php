@@ -15,6 +15,23 @@
                 <div class="card shadow">
                     <div class="card body">
                         <h2 class="text-center">Register</h2>
+
+                        <?php 
+                        if ($_SERVER['REQUEST_METHOD']=='POST') {
+                            $name = $_POST['name'];
+                            $email =$_POST['email'];
+                            $password = password_hash($_POST['password'] PASSWORD_BCRYPT);
+
+                             $sql = "INSERT INTO users(username, email, password) VALUE(?, ?, ?)";
+                             $stmt = $pdo->prepare($sql);
+                             $stmt->bindParam('sss', $name, $email, $password);
+                             if($stmt->execute){
+                                echo "<div>Registration Succesful <a href='login.php'>Log In Here</a></div>";
+                             }else{
+                                echo"<div class='alert alert-danger'>Error" .$stmt->error."</div>";
+                             }
+                        }
+                        ?>
                         
                     <form method="post">
                         <div class="mb-3">
