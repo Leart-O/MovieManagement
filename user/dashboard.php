@@ -33,5 +33,29 @@ $result = $conn->query($sql);
             <th scope="col">Status</th>
           </tr>
   </thead>
+
+  <tbody>
+    <?php
+    if($result->num_rows > 0){
+        while($row = $result->fetch_assoc()){
+            echo "<tr>
+                    <td>{$row['id']}</td>
+                    <td>{$row['title']}</td>
+                    <td>{$row['show_date']}</td>
+                    <td>{$row['show_time']}</td>
+                    <td>{$row['status']}</td>
+                    
+                </tr>";
+        }
+    }else{
+        echo '<tr><td colspan="5" class="text-center">No bookings found</td></tr>';
+    }
+    ?>
 </table>
 </div>
+
+<?php
+
+include '../include/footer.php';
+
+?>
